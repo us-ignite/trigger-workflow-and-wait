@@ -46,13 +46,10 @@ inputs:
     description: "The Github access token with access to the repository for comment URL. It is recommended you put this token under secrets."
     required: false
     default: ${{ github.token }}
-outputs:
-  workflow_id:
-    description: The ID of the workflow that was triggered by this action
-  workflow_url:
-    description: The URL of the workflow that was triggered by this action
-  conclusion:
-    description: Conclusion of the job, i.e pass/failure
+
+
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'composite'
+  steps:
+    - shell: bash
+      run: ./entrypoint.sh
