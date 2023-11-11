@@ -47,9 +47,13 @@ inputs:
     required: false
     default: ${{ github.token }}
 
+outputs:
+  workflow_id:
+    description: 'The ID of the workflow run.'
+  workflow_url:
+    description: 'The URL of the workflow run.'
+
 
 runs:
-  using: 'composite'
-  steps:
-    - shell: bash
-      run: ./entrypoint.sh
+  using: 'docker'
+  image: 'Dockerfile'
